@@ -1,0 +1,18 @@
+{
+  "name": "demo_web",
+  "version": "1.0.0",
+  "description": "This is just learning ",
+  "main": "virak.js",
+  "scripts": {
+    "start": "Node virak.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hello"
+  ],
+  "author": "Virak Rim",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.11"
+  }
+}

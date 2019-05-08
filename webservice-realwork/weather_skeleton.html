@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+</head>
+
+<body>
+    <h1>Weather all around the world</h1>
+    <form>
+        <label for="city"> What's the weather like in <input type="text" name="city" id="city" placeholder="City name" required> ? </label>
+        <input type="submit" value="Search">
+    </form>
+
+    <div id="weather" style="display: none;">
+       <img src="" id="icon" />
+       <p id="weatherDescr"> </p>
+       <p id="temp"> </p>
+       <p id="sun"> </p>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+
+    $(document).ready(function() {
+
+        var apiKey = e2cdf6f9a75bb2d6a02507c5ecb0bc50;
+        $("form").submit(function(event) {
+            event.preventDefault();
+            //TODO: retrieve the name of the city (inpit by user)
+            var city = $('#city').val();
+            //TODO: use $.ajax() to get data from the web service. See documentation to understand what url to use
+            var url = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID="+apiKeyl;
+            $.ajax({
+					url: url,
+					datatype:'json'
+				})
+                .done(function(data){
+                    $('weatherDescr').alert('Hello World');
+
+                })
+                
+				.fail(function(error){
+                     alert('Cannot asscess');
+                });
+            });
+        });
+</script>
+</body>
+
+</html>
+

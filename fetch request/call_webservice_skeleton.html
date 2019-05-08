@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>List of students</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="List of all students">
+	<meta name="author" content="Laura Hennequin">
+</head>
+<body>
+	<div id="content">
+		Loading data from web service, please wait...
+	</div>
+	<script>
+		var url = "http://kratie.pnc.lan/laura.hennequin/ssl/web.service/all_students_json.php";
+		 fetch(url).then(function(response) {
+          // handle HTTP response
+		  console.log(response);
+        }, function(error) {
+         // handle network error
+		      console.log(response);
+        })
+	</script>
+
+</body>
+</html>

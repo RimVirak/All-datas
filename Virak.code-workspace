@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "Upload_file"
+		},
+		{
+			"path": "Get_value"
+		},
+		{
+			"path": "Get_checkbox"
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,1 @@
+<p>From delete page</p>

@@ -1,0 +1,10 @@
+body{
+    background-color: grey;
+}
+.form-style {
+    margin-top:100px;
+    background-color:white;
+    border:1px solid white;
+    padding:40px;
+    border-radius:10px;
+}

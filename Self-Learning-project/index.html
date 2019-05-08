@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Self_Learning_Project</title>
+   
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+</head>
+<body id='body'>
+	<h1 class="header">Instant messenger</h1>
+	<div id="messagesTable"> 
+		<div id="loading">
+			<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> 
+		</div>
+	</div>
+	<div id="createMessage">
+		<BR/>Username: <input type='text' size='10' id='user' />	
+		Message: <input type='text' id='message' />
+        <!-- <input type='button' value='Send' id='sendButton' /> -->
+        <button type="button" id='sendButton' class=" btn btn-primary btn-sm">Send</button>	
+	</div>
+	<script>
+        
+
+        function getmessage()
+        {
+            var xmlhttp = new XMLHttpRequest();
+            var url = "http://kratie.pnc.lan/laura.hennequin/ssl/project/messages.php";
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var json = JSON.parse(xmlhttp.responseText);
+                    displayTable(json);
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+
+        function displayTable(json) {
+            var out = "<table><tr><th></th><th></th></tr>";
+            var i;
+            for(i = 0; i < json.length; i++) {
+                out += '<tr>';
+                out += '<td>' +  json[i].user + '</td>' ;
+                out += '<td>' +" : "+  json[i].message + '</td>';
+                out += '</tr>';
+            }
+            out += "</table>";
+            document.getElementById("messagesTable").innerHTML = out;
+        }
+
+        getmessage();
+
+    </script>
+
+    
+</body>
+<script src="jquery.js"></script>
+</html>

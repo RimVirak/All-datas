@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<title>Students</title>
+		<link rel="stylesheet" href="ajaxTable.css">
+	</head>
+	<body id='body'>
+		<div id="studentsTable">Loading list of students...</div>
+		<div id="createStudent">
+			<input type='text' id='studentName' />	
+			<input type='button' value='create' name='createButton' onClick='createStudent();' />	
+		</div>
+		<div id="error"></div>
+
+		<script src="jquery.js"></script>
+		<script>
+			
+		    var url = "http://localhost/Self-Learning-crud/students.php";
+			function getStudentsList()
+			{
+				$("#body").addClass('loading');
+				// var name = name;
+				
+				$.ajax({
+					url: "http://localhost/Self-Learning-crud/students.php",
+					data: {'name':name}
+				})
+				.done(displayTable)
+				.fail(displayError);
+			}
+
+			function createStudent()
+			{
+				$("#body").addClass('loading');
+				//TODO: retrieve data from user's input
+				var name = $("#studentName").val();
+				$.ajax({
+					method: "POST",
+					url: "http://localhost/Self-Learning-crud/students.php",
+					data: {"name" :name}
+					//TODO: add the data to post to the web service
+				})
+				.done(getStudentsList)
+				.fail(displayError);
+			}
+
+			function deleteStudent(id)
+			{
+				$("#body").addClass('loading');
+				$.ajax({
+					method: "POST",
+					url: "http://localhost/Self-Learning-crud/students.php",
+					//TODO: add the data to post to the web service
+					data:'id='+id,
+				})
+				.done(getStudentsList)
+				.fail(displayError);
+			}
+
+			function displayTable(json) {
+				var out = "<h1>List of students</h1><table><tr><th>ID</th><th>Name</th></tr>";
+				var i;
+				for(i = 0; i < json.length; i++) {
+					out += '<tr>';
+					out += '<td>' + json[i].id + '</td>';
+					out += '<td>' + json[i].name + '</td>';
+					out += '<td><input type="button" value="X" onClick="deleteStudent('+ json[i].id +');"></input></td>';
+					out += '</tr>';
+				}
+				out += "</table>";
+				$("#studentsTable").html(out);
+				$("#body").removeClass('loading');
+			}
+			function displayError(error){
+				$("#body").removeClass('loading');
+				$("#error").html('Sorry, there was an error: ' + error.statusText + " (" + error.status + ")")
+				.css('color','red');
+			}
+			
+			$( document ).ready(function() {
+				getStudentsList();
+			});
+		</script>
+	</body>
+</html>

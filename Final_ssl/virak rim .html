@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Final exam</title>
+		<meta name="author" content="Your name">
+	</head>
+	<body>
+		<h2 class="header text-center">List of students</h2>
+		<div id='list_wepa'>
+			Loading, please wait...
+		</div>
+		<div id='list_wepb'>
+		</div>
+		<script src="font-awesome/font-awesome/css/font-awesome.min.css"></script>
+		<script src="animate.css"></script>
+		<script src="jquery-2.2.0.min.js"></script>
+		
+		<script LANGUAGE="JavaScript">
+			
+			function getStudents()
+			{
+			   $.ajax({
+				   
+				url: 'http://kratie.pnc.lan/laura.hennequin/ssl/exam/students.php',
+				type: "GET",
+				dataType: 'JSON'
+			})
+				.done(display)
+				.fail(fail)
+
+			}
+
+			function display(studentA) {
+			var Arraylist = "";
+			for (i = 0; i <studentA.length; i++) {
+
+				Arraylist += ("<li> " + studentA[i].name+ " : "+  studentA[i].score + " </li>");
+
+			  };
+			};
+
+			function display(studentB) {
+			var Arraylist = "";
+			 for (i = 0; i <studentB.length; i++) {
+
+				Arraylist += ("<li> " + studentB[i].name+ " : "+  studentB[i].score + " </li>");
+
+			  };
+			};
+		    
+			$(document).ready(function(){
+				getStudents();
+			});
+		</script>
+	</body>
+</html>

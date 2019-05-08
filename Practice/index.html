@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="HTML, CSS, Simple Website, Navigation Bar, Table Footer">
+	<meta name="author" content="Sam Oun">
+	<title>Home Page</title>
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<!-- style css -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- css menu bar -->
+	<link rel="stylesheet" type="text/css" href="css/menu.css">
+	<!-- font-awesome -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- google font -->
+	<link href='https://fonts.googleapis.com/css?family=Sonsie One' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Julee' rel='stylesheet'>
+</head>
+
+<body>
+	   <div class="box container" id="load">
+				<section class="header"></section>
+				<section class="body"></section>
+				<section class="footer"></section>
+	   </div>
+	<script>
+		$(document).ready(function(){
+			$(".header").load("partials/header.html");
+			$(".body").load("partials/home.html");
+			$(".footer").load("partials/footer.html");
+		});
+	</script>
+</body>
+</html>

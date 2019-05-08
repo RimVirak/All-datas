@@ -1,0 +1,127 @@
+/*
+Theme Name: FinalExamCMS
+Author: WEP2019
+Author URI: https://www.passerellesnumeriques.org/en/;
+Version: 1.0
+*/
+
+body{
+	font-family: Aria,sans-serif;
+	font-size: 14px;
+	color: #333;
+}
+
+a:link,
+a:visited{
+	color:#006ec3;
+}
+
+p{
+	line-height: 1.65em;
+	font-size: large;
+}
+
+div.container{
+	max-width: 920px;
+	margin: 0 auto;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.site-header{
+	border-bottom: 2px solid #999;
+}
+
+.site-footer{
+	margin-top: 30px;
+	border-top: 2px solid #999;
+}
+
+article.post{
+	border-bottom: 2px dotted #bbbbbb;
+
+}
+
+article.post:last-of-type{
+	border-bottom: none;
+}
+
+.site-nav ul:before,
+.site-nav ul:after{
+	content: "";
+	display: table;
+}
+.site-nav ul:after{
+	clear: both;
+}
+/*.site-nav ul{
+	*zoom:1;
+}*/
+
+/*navigation menu link*/
+.site-nav ul{
+	margin: 0;
+	padding: 0;
+}
+
+
+.site-nav ul li{
+	list-style: none;
+	float:left;
+}
+
+/*header navigation*/
+.site-header nav ul li{
+	margin-right: 5px;
+}
+
+
+.site-header nav ul li a:link{
+	display: block;
+	font-size: 20px;
+	padding: 10px 18px;
+	border-bottom: none;
+	text-decoration: none;
+	margin-top: 20px;
+}
+
+.site-header nav ul li a:visited{
+	text-decoration: underline;
+}
+
+/*hover effect*/
+.site-header nav ul li a:hover{
+	background-color: blue;
+}
+
+/*current state*/
+.site-header nav ul li.current-menu-item a:link,
+.site-header nav ul li.current-menu-item a:visited{
+	background-color: blue;
+	color: #fff;
+	font-size: 20px;
+}
+
+/*footer menu*/
+.site-footer nav ul li{
+	margin-right: 10px;
+	padding-right: 10px;
+	border-right: 1px dotted #BBB;
+}
+
+/*page layout*/
+article.page h2{
+	font-size: 300%;
+}
+
+.tdcontent {
+    border: dashed 3px #ffd35e;
+    background: #fdf5e1;
+    padding: 10px;
+}
+ 
+.tdtitle {
+    border: dashed 3px #2ecc71;
+    background: #d7fee8;
+    padding: 10px;
+}

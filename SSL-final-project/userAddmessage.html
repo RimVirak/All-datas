@@ -1,0 +1,78 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Chating of Class WEP-2019</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Chat of WEP 2016.">
+	<meta name="author" content="Laura Hennequin">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<script src="jquery.js"></script>
+</head>
+
+<body id='body'>
+	<h1> Instant messenger </h1>
+	<div id="messagesTable">
+		<div id="loading">
+			<i class="fab fa-phoenix-framework"></i>
+			<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+		</div>
+		<div>
+			<div id="Avotar"></div>
+		</div>
+	</div>
+	<div id="createMessage">
+		<BR />Username: <input type='text' size='10' id='user' />
+		Message: <input type='text' id='message' />
+		<input type='submit' value='Send' id='sendButton' onClick='getvalue();' />
+	</div>
+	
+	<script>
+		function refreshData() {
+			$.ajax({
+				url: 'http://kratie.pnc.lan/laura.hennequin/ssl/project/messages.php',
+				type: "GET",
+				dataType: 'JSON'
+			})
+				.done(display)
+				.fail(fail)
+		}
+		function fail() {
+			alert('Sorry you cannot add your messager');
+			document.getElementById('Avotar').innerHTML = ('You have the problems with it. Please check it again.');
+
+
+		}
+
+		function display(listJson) {
+			var Arraylist = "";
+			for (i = 0; i < listJson.length; i++) {
+
+				Arraylist += ("<li> " + listJson[i].user + ": "+  listJson[i].message + " </li>");
+
+			};
+			document.getElementById('Avotar').innerHTML = (Arraylist);
+			$("#loading").css('display', 'none');
+		};
+
+		function getvalue() {
+			var user = $("#user").val();
+			var message = $("#message").val();
+			$.ajax({
+				method: "POST",
+				url: 'http://kratie.pnc.lan/laura.hennequin/ssl/project/messages.php',
+				data: { "user": user, "message": message }
+			})
+				.done(display)
+				.fail(file);
+		}
+
+		// refreshData();
+		setInterval("refreshData();", 3000);
+
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+{
+   
+    "require": {
+        "twitter/bootstrap": "^4.3"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Virak\\": "../src"
+        }
+    }
+
+}
